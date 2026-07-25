@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" role="img" aria-labelledby="title">
+  <title id="title">بار اراک</title>
+  <rect width="52" height="52" rx="15" fill="#ef5b25"/>
+  <path d="M10 30h25v-9H22l-4-7h-8v16Zm25-5h5l5 7v4H35V25Z" fill="#fff"/>
+  <circle cx="18" cy="36" r="5" fill="#152d2b" stroke="#fff" stroke-width="2"/>
+  <circle cx="38" cy="36" r="5" fill="#152d2b" stroke="#fff" stroke-width="2"/>
+  <text x="64" y="25" font-family="Tahoma, Arial" font-size="19" font-weight="700" fill="#152d2b">بار اراک</text>
+  <text x="64" y="43" font-family="Tahoma, Arial" font-size="10" fill="#60706d">باربری مطمئن، مسیر روشن</text>
+</svg>
