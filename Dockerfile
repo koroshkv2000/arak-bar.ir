@@ -30,7 +30,7 @@ RUN composer dump-autoload \
     --no-interaction \
     && php artisan package:discover --ansi
 
-FROM php:8.3-apache-bookworm
+FROM php:8.4-apache-bookworm
 
 ENV APP_ENV=production \
     APP_DEBUG=false \
@@ -42,6 +42,8 @@ RUN apt-get update \
         curl \
         libicu-dev \
         libzip-dev \
+        libsqlite3-dev \
+        pkg-config \
         unzip \
     && docker-php-ext-install -j"$(nproc)" \
         intl \
