@@ -1,31 +1,16 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#f3f5f9" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#080b12" media="(prefers-color-scheme: dark)">
-    <title>باربری اراک | راهنمای حمل وسایل خانه در شهر اراک</title>
-    <meta name="description" content="راهنمای جامع باربری اراک برای حمل شهری وسایل منزل؛ نکات بسته‌بندی، انتخاب خودروی مناسب، برآورد هزینه و برنامه‌ریزی اسباب‌کشی در اراک.">
-    <meta name="keywords" content="باربری اراک، حمل وسایل خانه در اراک، اسباب کشی اراک، باربری شهری اراک">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="author" content="راهنمای باربری اراک">
-    <link rel="canonical" href="{{ url('/') }}">
-    <link rel="alternate" hreflang="fa-IR" href="{{ url('/') }}">
-    <link rel="preload" href="{{ asset('assets/fonts/IRANSansWeb.woff') }}" as="font" type="font/woff" crossorigin>
-    <link rel="stylesheet" href="{{ asset('assets/FontAwesome.Pro.7.3.0/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/FontAwesome.Pro.7.3.0/css/light.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}?v={{ filemtime(public_path('assets/css/app.css')) }}">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="fa_IR">
-    <meta property="og:title" content="باربری اراک | راهنمای حمل وسایل خانه">
-    <meta property="og:description" content="اطلاعات کاربردی برای یک اسباب‌کشی شهری منظم، کم‌ریسک و آگاهانه در اراک.">
-    <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:site_name" content="راهنمای باربری اراک">
-    <meta name="twitter:card" content="summary">
-    <script>
-        document.documentElement.dataset.theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    </script>
+@extends('layouts.app')
+
+@section('title', 'باربری اراک | راهنمای حمل وسایل خانه در شهر اراک')
+@section('description', 'راهنمای جامع باربری اراک برای حمل شهری وسایل منزل؛ نکات بسته‌بندی، انتخاب خودروی مناسب، برآورد هزینه و برنامه‌ریزی اسباب‌کشی در اراک.')
+@section('keywords', 'باربری اراک، حمل وسایل خانه در اراک، اسباب کشی اراک، باربری شهری اراک')
+@section('author', 'راهنمای باربری اراک')
+@section('canonical', url('/'))
+@section('og_type', 'website')
+@section('og_title', 'باربری اراک | راهنمای حمل وسایل خانه')
+@section('og_description', 'اطلاعات کاربردی برای یک اسباب‌کشی شهری منظم، کم‌ریسک و آگاهانه در اراک.')
+@section('footer_disclaimer', 'اطلاعات این صفحه جایگزین استعلام مستقیم شرایط حمل نیست.')
+
+@section('schema')
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
@@ -84,37 +69,9 @@
         ]
     }
     </script>
-</head>
-<body>
-    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+@endsection
 
-    <header class="site-header">
-        <nav class="nav glass" aria-label="ناوبری اصلی">
-            <a class="brand" href="{{ url('/') }}" aria-label="صفحه اصلی راهنمای باربری اراک">
-                <span class="brand-icon"><i class="fa-light fa-truck-ramp-box" aria-hidden="true"></i></span>
-                <span>
-                    <strong>باربری اراک</strong>
-                    <small>راهنمای حمل شهری</small>
-                </span>
-            </a>
-            <div class="nav-links" id="nav-links">
-                <a href="#guide">راهنمای حمل</a>
-                <a href="#cost">هزینه‌ها</a>
-                <a href="#checklist">چک‌لیست</a>
-                <a href="{{ route('faq') }}">پرسش‌ها</a>
-            </div>
-            <div class="nav-actions">
-                <button class="icon-button" id="theme-toggle" type="button" aria-label="تغییر حالت نمایش">
-                    <i class="fa-light fa-moon" aria-hidden="true"></i>
-                </button>
-                <button class="icon-button menu-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="باز کردن منو">
-                    <i class="fa-light fa-bars" aria-hidden="true"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <main id="main-content">
+@section('content')
         <section class="hero section">
             <div class="orb orb-one"></div>
             <div class="orb orb-two"></div>
@@ -200,7 +157,7 @@
                         <div class="feature-icon cyan"><i class="fa-light fa-truck-container" aria-hidden="true"></i></div>
                         <h3>انتخاب خودرو</h3>
                         <p>حجم بار و ابعاد وسایل تعیین می‌کند وانت مسقف، نیسان یا کامیونت برای جابه‌جایی مناسب‌تر است.</p>
-                        <a href="#vehicle">مقایسه خودروها <i class="fa-light fa-arrow-left" aria-hidden="true"></i></a>
+                        <a href="{{ route('truck.dimensions') }}">جدول ابعاد کامیون و تریلی <i class="fa-light fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
                 </div>
             </div>
@@ -302,34 +259,4 @@
                 </div>
             </div>
         </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer-main">
-            <div class="footer-brand">
-                <a class="brand" href="{{ url('/') }}">
-                    <span class="brand-icon"><i class="fa-light fa-truck-ramp-box" aria-hidden="true"></i></span>
-                    <span><strong>باربری اراک</strong><small>مرجع محتوای حمل شهری</small></span>
-                </a>
-                <p>این وب‌سایت یک مرجع محتوایی مستقل درباره حمل وسایل خانه و باربری شهری در اراک است و خدمات باربری ارائه نمی‌دهد.</p>
-            </div>
-            <div class="footer-links">
-                <strong>دسترسی سریع</strong>
-                <a href="#guide">راهنمای حمل</a>
-                <a href="#cost">عوامل هزینه</a>
-                <a href="#checklist">چک‌لیست</a>
-                <a href="{{ route('faq') }}">پرسش‌های متداول</a>
-            </div>
-            <div class="support-card glass">
-                <i class="fa-light fa-headset" aria-hidden="true"></i>
-                <div><small>پشتیبانی فنی وب‌سایت</small><a href="tel:+989184274276" dir="ltr">0918-427-427-6</a></div>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <span>© {{ date('Y') }} راهنمای باربری اراک</span>
-            <span>اطلاعات این صفحه جایگزین استعلام مستقیم شرایط حمل نیست.</span>
-        </div>
-    </footer>
-    <script src="{{ asset('assets/js/app.js') }}?v={{ filemtime(public_path('assets/js/app.js')) }}" defer></script>
-</body>
-</html>
+@endsection

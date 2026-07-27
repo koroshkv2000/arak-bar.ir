@@ -1,29 +1,15 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#f3f5f9" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#080b12" media="(prefers-color-scheme: dark)">
-    <title>سوالات متداول باربری اراک | مقایسه وانت، نیسان و ایسوزو</title>
-    <meta name="description" content="پاسخ سوالات متداول باربری اراک درباره فرق وانت بار با نیسان، میزان بار مجاز، فضای بار ایسوزو و مقایسه پیکان وانت و پراید وانت.">
-    <meta name="keywords" content="باربری اراک، فرق وانت بار با نیسان، میزان بار وانت و نیسان، فضای بار ایسوزو، پیکان وانت، پراید وانت">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="{{ route('faq') }}">
-    <link rel="alternate" hreflang="fa-IR" href="{{ route('faq') }}">
-    <link rel="preload" href="{{ asset('assets/fonts/IRANSansWeb.woff') }}" as="font" type="font/woff" crossorigin>
-    <link rel="stylesheet" href="{{ asset('assets/FontAwesome.Pro.7.3.0/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/FontAwesome.Pro.7.3.0/css/light.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}?v={{ filemtime(public_path('assets/css/app.css')) }}">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="fa_IR">
-    <meta property="og:title" content="سوالات متداول باربری اراک">
-    <meta property="og:description" content="راهنمای انتخاب خودرو برای حمل شهری وسایل در اراک.">
-    <meta property="og:url" content="{{ route('faq') }}">
-    <meta property="og:site_name" content="راهنمای باربری اراک">
-    <script>
-        document.documentElement.dataset.theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    </script>
+@extends('layouts.app')
+
+@section('title', 'سوالات متداول باربری اراک | مقایسه وانت، نیسان و ایسوزو')
+@section('description', 'پاسخ سوالات متداول باربری اراک درباره فرق ونت بار با نیسان، میزان بار مجاز، فضای بار ایسوزو و مقایسه پیکان وانت و پراید وانت.')
+@section('keywords', 'باربری اراک، فرق ونت بار با نیسان، میزان بار ونت و نیسان، فضای بار ایسوزو، پیکان وانت، پراید وانت')
+@section('canonical', route('faq'))
+@section('og_type', 'website')
+@section('og_title', 'سوالات متداول باربری اراک')
+@section('og_description', 'راهنمای انتخاب خودرو برای حمل شهری وسایل در اراک.')
+@section('footer_disclaimer', 'ظرفیت دقیق هر خودرو باید از کارت و مشخصات فنی همان خودرو بررسی شود.')
+
+@section('schema')
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
@@ -72,34 +58,9 @@
         ]
     }
     </script>
-</head>
-<body>
-    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+@endsection
 
-    <header class="site-header">
-        <nav class="nav glass" aria-label="ناوبری اصلی">
-            <a class="brand" href="{{ route('home') }}" aria-label="صفحه اصلی راهنمای باربری اراک">
-                <span class="brand-icon"><i class="fa-light fa-truck-ramp-box" aria-hidden="true"></i></span>
-                <span><strong>باربری اراک</strong><small>راهنمای حمل شهری</small></span>
-            </a>
-            <div class="nav-links" id="nav-links">
-                <a href="{{ route('home') }}#guide">راهنمای حمل</a>
-                <a href="{{ route('home') }}#cost">هزینه‌ها</a>
-                <a href="{{ route('home') }}#checklist">چک‌لیست</a>
-                <a class="active" href="{{ route('faq') }}" aria-current="page">پرسش‌ها</a>
-            </div>
-            <div class="nav-actions">
-                <button class="icon-button" id="theme-toggle" type="button" aria-label="تغییر حالت نمایش">
-                    <i class="fa-light fa-moon" aria-hidden="true"></i>
-                </button>
-                <button class="icon-button menu-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="باز کردن منو">
-                    <i class="fa-light fa-bars" aria-hidden="true"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <main id="main-content">
+@section('content')
         <section class="faq-page-hero section">
             <div class="faq-orb faq-orb-one"></div>
             <div class="faq-orb faq-orb-two"></div>
@@ -148,7 +109,7 @@
                     <article class="answer-card glass" id="van-vs-nissan">
                         <div class="answer-head">
                             <span class="answer-icon blue"><i class="fa-light fa-truck-pickup" aria-hidden="true"></i></span>
-                            <div><small>مقایسه خودرو</small><h2>فرق وانت بار با نیسان چیست؟</h2></div>
+                            <div><small>مقایسه خودرو</small><h2>فرق ونت بار با نیسان چیست؟</h2></div>
                         </div>
                         <p>در گفت‌وگوی روزمره، «وانت بار» معمولاً به خودروهای سبک‌تری مانند پراید وانت، آریسان یا وانت‌های مشابه گفته می‌شود؛ در حالی که «نیسان» اغلب به وانت زامیاد با شاسی قوی‌تر و اتاق بار بزرگ‌تر اشاره دارد.</p>
                         <div class="compare-grid">
@@ -220,6 +181,7 @@
                             </div>
                         </div>
                         <div class="answer-summary"><i class="fa-light fa-ruler-combined" aria-hidden="true"></i><p>برای برآورد واقعی، طول، عرض و ارتفاع داخلی اتاق همان کامیونت را دریافت کنید و آن را با ابعاد بزرگ‌ترین وسایل خانه مقایسه کنید.</p></div>
+                        <a class="answer-related-link" href="{{ route('truck.dimensions') }}">مشاهده جدول ابعاد و ظرفیت انواع کامیون و تریلی <i class="fa-light fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="answer-card glass" id="peykan-space">
@@ -263,34 +225,4 @@
                 <a class="button primary" href="{{ route('home') }}#checklist">مشاهده چک‌لیست <i class="fa-light fa-arrow-left" aria-hidden="true"></i></a>
             </div>
         </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer-main">
-            <div class="footer-brand">
-                <a class="brand" href="{{ route('home') }}">
-                    <span class="brand-icon"><i class="fa-light fa-truck-ramp-box" aria-hidden="true"></i></span>
-                    <span><strong>باربری اراک</strong><small>مرجع محتوای حمل شهری</small></span>
-                </a>
-                <p>این وب‌سایت یک مرجع محتوایی مستقل درباره حمل وسایل خانه و باربری شهری در اراک است و خدمات باربری ارائه نمی‌دهد.</p>
-            </div>
-            <div class="footer-links">
-                <strong>دسترسی سریع</strong>
-                <a href="{{ route('home') }}#guide">راهنمای حمل</a>
-                <a href="{{ route('home') }}#cost">عوامل هزینه</a>
-                <a href="{{ route('home') }}#checklist">چک‌لیست</a>
-                <a href="{{ route('faq') }}">پرسش‌های متداول</a>
-            </div>
-            <div class="support-card glass">
-                <i class="fa-light fa-headset" aria-hidden="true"></i>
-                <div><small>پشتیبانی فنی وب‌سایت</small><a href="tel:+989184274276" dir="ltr">0918-427-427-6</a></div>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <span>© {{ date('Y') }} راهنمای باربری اراک</span>
-            <span>ظرفیت دقیق هر خودرو باید از کارت و مشخصات فنی همان خودرو بررسی شود.</span>
-        </div>
-    </footer>
-    <script src="{{ asset('assets/js/app.js') }}?v={{ filemtime(public_path('assets/js/app.js')) }}" defer></script>
-</body>
-</html>
+@endsection
