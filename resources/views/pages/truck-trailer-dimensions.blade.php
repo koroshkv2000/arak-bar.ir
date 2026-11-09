@@ -1,89 +1,98 @@
 @extends('layouts.app')
 
-@section('title', 'ابعاد و ظرفیت انواع کامیون و تریلی | جدول کامل مشخصات')
-@section('description', 'جدول کامل ابعاد، طول، عرض و ظرفیت بار انواع کامیون و تریلی؛ از کامیونت و خاور تا کامیون تک، ۱۰ چرخ، تریلی کفی، کمرشکن و تریلی ترافیکی.')
-@section('keywords', 'ابعاد کامیون، ابعاد تریلی، ظرفیت بار کامیون، جدول مشخصات کامیون، طول تریلی، عرض تریلی، ظرفیت خاور، ابعاد کمرشکن')
+@section('title', 'جدول ابعاد، ارتفاع و ظرفیت انواع کامیون و تریلی')
+@section('description', 'حداکثر ارتفاع مجاز بار کامیون از سطح زمین چقدر است؟ جدول مشخصات کامل طول، عرض، ظرفیت وزنی و قوانین راهداری انواع خاور، تک، جفت، تریلی و کمرشکن.')
+@section('keywords', 'ابعاد کامیون، ارتفاع مجاز کامیون، ظرفیت بار کامیون، جدول مشخصات تریلی، طول تریلی، عرض تریلی، ارتفاع بارگیر، ابعاد کمرشکن')
 @section('author', 'راهنمای باربری اراک')
 @section('canonical', route('truck.dimensions'))
-@section('og_type', 'article')
-@section('og_title', 'جدول ابعاد و ظرفیت انواع کامیون و تریلی')
-@section('og_description', 'مقایسه یک‌جای عرض، طول، ظرفیت بار و وزن کامیون با بار برای انتخاب وسیله حمل مناسب.')
-@section('footer_disclaimer', 'مشخصات نهایی خودرو و ضوابط مسیر را پیش از حمل استعلام کنید.')
 
+{{-- Open Graph Tags for Social & Rich Snippets --}}
+@section('meta_og')
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="جدول ابعاد، ارتفاع و ظرفیت انواع کامیون و تریلی">
+    <meta property="og:description" content="راهنمای جامع مشخصات فنی، ارتفاع مجاز و ظرفیت بارگیری انواع کامیون، تریلی و کمرشکن برای انتخاب صحیح وسیله حمل.">
+    <meta property="og:image" content="{{ asset('assets/images/ابعاد-و-ظرفیت-انواع-کامیون-و-تریلی.webp') }}">
+    <meta property="og:url" content="{{ route('truck.dimensions') }}">
+@endsection
+
+{{-- Google Schema Markup with Deep Linking (# anchors) and Extended FAQ --}}
 @section('schema')
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
-        "@graph": [
+        "@@graph": [
             {
-                "@type": "Article",
-                "@id": "{{ route('truck.dimensions') }}#article",
-                "mainEntityOfPage": {"@type": "WebPage", "@id": "{{ route('truck.dimensions') }}"},
-                "headline": "جدول ابعاد و ظرفیت انواع کامیون و تریلی",
-                "description": "راهنمای مقایسه ابعاد و ظرفیت بار کامیونت، خاور، کامیون، تریلی و کمرشکن",
+                "@@type": "Article",
+                "@@id": "{{ route('truck.dimensions') }}#article",
+                "mainEntityOfPage": {"@@type": "WebPage", "@@id": "{{ route('truck.dimensions') }}"},
+                "headline": "جدول ابعاد، ارتفاع و ظرفیت انواع کامیون و تریلی",
+                "image": {"@@id": "{{ route('truck.dimensions') }}#primaryimage"},
+                "description": "راهنمای مقایسه ابعاد، ارتفاع مجاز و ظرفیت بار کامیونت، خاور، کامیون، تریلی و کمرشکن",
                 "inLanguage": "fa-IR",
-                "author": {"@type": "Organization", "name": "راهنمای باربری اراک"},
-                "publisher": {"@type": "Organization", "name": "راهنمای باربری اراک", "url": "{{ url('/') }}"}
+                "author": {"@@type": "Organization", "name": "راهنمای باربری اراک"},
+                "publisher": {"@@type": "Organization", "name": "راهنمای باربری اراک", "url": "{{ url('/') }}"}
             },
             {
-                "@type": "BreadcrumbList",
+                "@@type": "ImageObject",
+                "@@id": "{{ route('truck.dimensions') }}#primaryimage",
+                "url": "{{ asset('assets/images/ابعاد-و-ظرفیت-انواع-کامیون-و-تریلی.webp') }}",
+                "width": 1024,
+                "height": 1024,
+                "caption": "جدول مشخصات فنی کامیون و تریلی"
+            },
+            {
+                "@@type": "BreadcrumbList",
                 "itemListElement": [
-                    {"@type": "ListItem", "position": 1, "name": "باربری اراک", "item": "{{ route('home') }}"},
-                    {"@type": "ListItem", "position": 2, "name": "ابعاد کامیون و تریلی", "item": "{{ route('truck.dimensions') }}"}
+                    {"@@type": "ListItem", "position": 1, "name": "باربری اراک", "item": "{{ route('home') }}"},
+                    {"@@type": "ListItem", "position": 2, "name": "ابعاد کامیون و تریلی", "item": "{{ route('truck.dimensions') }}"}
                 ]
             },
             {
-                "@type": "ItemList",
-                "name": "مشخصات انواع کامیون و تریلی",
-                "numberOfItems": 17,
+                "@@type": "ItemList",
+                "name": "دسترسی مستقیم به ابعاد انواع کامیون و تریلی",
                 "itemListElement": [
-                    {"@type": "ListItem", "position": 1, "name": "کامیونت"},
-                    {"@type": "ListItem", "position": 2, "name": "خاور ۶۰۸"},
-                    {"@type": "ListItem", "position": 3, "name": "خاور ۸۰۸"},
-                    {"@type": "ListItem", "position": 4, "name": "۹۱۱ (بادسان)"},
-                    {"@type": "ListItem", "position": 5, "name": "کامیون تک"},
-                    {"@type": "ListItem", "position": 6, "name": "کامیون ۱۰ چرخ"},
-                    {"@type": "ListItem", "position": 7, "name": "تریلی کفی معمولی"},
-                    {"@type": "ListItem", "position": 8, "name": "تریلی کفی ۱۳/۶۰"},
-                    {"@type": "ListItem", "position": 9, "name": "ترانزیت معمولی"},
-                    {"@type": "ListItem", "position": 10, "name": "ترانزیت ۱۳/۶۰"},
-                    {"@type": "ListItem", "position": 11, "name": "کمر شکن ۲ محور"},
-                    {"@type": "ListItem", "position": 12, "name": "کمر شکن ۷ محور"},
-                    {"@type": "ListItem", "position": 13, "name": "کمر شکن ۱۱ محور"},
-                    {"@type": "ListItem", "position": 14, "name": "تریلی کشویی"},
-                    {"@type": "ListItem", "position": 15, "name": "تریلی ترافیکی معمولی"},
-                    {"@type": "ListItem", "position": 16, "name": "تریلی ترافیکی تک اسکورت"},
-                    {"@type": "ListItem", "position": 17, "name": "تریلی ترافیکی ۲ اسکورت"}
+                    {"@@type": "ListItem", "position": 1, "name": "ابعاد و ظرفیت کامیونت", "url": "{{ route('truck.dimensions') }}#row-pickup"},
+                    {"@@type": "ListItem", "position": 2, "name": "ابعاد و ظرفیت خاور ۶۰۸", "url": "{{ route('truck.dimensions') }}#row-khavar-608"},
+                    {"@@type": "ListItem", "position": 3, "name": "ابعاد و ظرفیت خاور ۸۰۸", "url": "{{ route('truck.dimensions') }}#row-khavar-808"},
+                    {"@@type": "ListItem", "position": 4, "name": "ابعاد و ظرفیت خاور مسقف", "url": "{{ route('truck.dimensions') }}#row-khavar-covered"},
+                    {"@@type": "ListItem", "position": 5, "name": "ابعاد و ظرفیت بنز ۹۱۱", "url": "{{ route('truck.dimensions') }}#row-benz-911"},
+                    {"@@type": "ListItem", "position": 6, "name": "ابعاد و ظرفیت کامیون تک (۶ چرخ)", "url": "{{ route('truck.dimensions') }}#row-single-truck"},
+                    {"@@type": "ListItem", "position": 7, "name": "ابعاد و ظرفیت کامیون جفت (۱۰ چرخ)", "url": "{{ route('truck.dimensions') }}#row-double-truck"},
+                    {"@@type": "ListItem", "position": 8, "name": "ابعاد و ظرفیت تریلی کفی معمولی", "url": "{{ route('truck.dimensions') }}#row-trailer-normal"},
+                    {"@@type": "ListItem", "position": 9, "name": "ابعاد و ظرفیت تریلی کفی ۱۳/۶۰", "url": "{{ route('truck.dimensions') }}#row-trailer-1360"},
+                    {"@@type": "ListItem", "position": 10, "name": "ابعاد و ظرفیت کمرشکن ۲ محور", "url": "{{ route('truck.dimensions') }}#row-lowboy-2axle"},
+                    {"@@type": "ListItem", "position": 11, "name": "ابعاد و ظرفیت کمرشکن ۳ محور", "url": "{{ route('truck.dimensions') }}#row-lowboy-3axle"},
+                    {"@@type": "ListItem", "position": 12, "name": "ابعاد و ظرفیت کمرشکن ۴ محور", "url": "{{ route('truck.dimensions') }}#row-lowboy-4axle"},
+                    {"@@type": "ListItem", "position": 13, "name": "ابعاد و ظرفیت بوژی و کمرشکن ۱۱ محور", "url": "{{ route('truck.dimensions') }}#row-lowboy-11axle"}
                 ]
             },
             {
-                "@type": "FAQPage",
-                "@id": "{{ route('truck.dimensions') }}#faq",
+                "@@type": "FAQPage",
                 "mainEntity": [
                     {
-                        "@type": "Question",
+                        "@@type": "Question",
                         "name": "حد مجاز ارتفاع بار کامیون از سطح زمین چقدر است؟",
-                        "acceptedAnswer": {"@type": "Answer", "text": "بر اساس اطلاعات این جدول، حد مجاز ارتفاع بار کامیون از سطح زمین ۴/۵ متر است."}
+                        "acceptedAnswer": {"@@type": "Answer", "text": "حد مجاز قانونی ۴/۵ متر از سطح زمین است. بارهای مرتفع‌تر از این مقدار، بار ترافیکی محسوب شده و نیازمند دریافت مجوز ویژه از سازمان راهداری و اسکورت هستند."}
                     },
                     {
-                        "@type": "Question",
-                        "name": "طول تریلی کفی معمولی و تریلی کفی ۱۳/۶۰ چقدر است؟",
-                        "acceptedAnswer": {"@type": "Answer", "text": "طول تریلی کفی معمولی ۱۲/۲۰ متر و طول تریلی کفی ۱۳/۶۰ برابر ۱۳/۶۰ متر است. عرض هر دو ۲/۵۰ متر درج شده است."}
+                        "@@type": "Question",
+                        "name": "حداکثر عرض مجاز کامیون و تریلی در جاده‌ها چقدر است؟",
+                        "acceptedAnswer": {"@@type": "Answer", "text": "طبق قوانین راهداری ایران، حداکثر عرض مجاز وسایل نقلیه باری برای تردد عادی ۲/۶۰ متر است. بارهای عریض‌تر از این مقدار ترافیکی محسوب می‌شوند."}
                     },
                     {
-                        "@type": "Question",
-                        "name": "ظرفیت بار کامیون تک و کامیون ۱۰ چرخ چقدر است؟",
-                        "acceptedAnswer": {"@type": "Answer", "text": "در این جدول ظرفیت بار کامیون تک ۱۰ تن و ظرفیت کامیون ۱۰ چرخ ۱۵ تن ذکر شده است."}
+                        "@@type": "Question",
+                        "name": "تفاوت ظرفیت و ابعاد کامیون تک (۶ چرخ) با جفت (۱۰ چرخ) چیست؟",
+                        "acceptedAnswer": {"@@type": "Answer", "text": "کامیون تک دارای ظرفیت بارگیری حدود ۱۰ تن و طول اتاق ۵/۸۰ تا ۶/۲۰ متر است، اما کامیون جفت (۱۰ چرخ) توانایی حمل ۱۵ تن بار را دارد و طول اتاق آن معمولاً ۶/۸۰ تا ۷ متر می‌باشد."}
                     },
                     {
-                        "@type": "Question",
-                        "name": "برای بارهای فوق سنگین کدام کمرشکن مناسب‌تر است؟",
-                        "acceptedAnswer": {"@type": "Answer", "text": "از میان گزینه‌های جدول، کمرشکن ۱۱ محور با ظرفیت بار ۵۹ تن بیشترین ظرفیت را دارد؛ انتخاب نهایی باید با توجه به ابعاد محموله، مسیر و مجوزهای حمل انجام شود."}
+                        "@@type": "Question",
+                        "name": "تفاوت طول تریلی کفی معمولی با تریلی ۱۳/۶۰ چیست؟",
+                        "acceptedAnswer": {"@@type": "Answer", "text": "طول بارگیر تریلی‌های کفی معمولی ۱۲/۲۰ متر با ظرفیت ۲۲ تن است، در حالی که طول مدل‌های ترانزیت و کفی بلند ۱۳/۶۰ متر با ظرفیت حدود ۲۵ تن می‌باشد."}
                     },
                     {
-                        "@type": "Question",
-                        "name": "تفاوت وزن بار با وزن کامیون با بار چیست؟",
-                        "acceptedAnswer": {"@type": "Answer", "text": "وزن بار، ظرفیت محموله قابل حمل است؛ وزن کامیون با بار، مجموع وزن وسیله نقلیه و محموله را نشان می‌دهد."}
+                        "@@type": "Question",
+                        "name": "برای حمل بارهای سنگین بیش از ۴۰ تن از چه ماشینی استفاده می‌شود؟",
+                        "acceptedAnswer": {"@@type": "Answer", "text": "برای محموله‌های فوق سنگین بالای ۴۰ تن، از انواع کمرشکن‌ها (۵ تا ۱۱ محور) و بوژی استفاده می‌شود که ظرفیت حمل بار از ۴۶ تن تا بیش از ۱۰۰ تن را دارا هستند."}
                     }
                 ]
             }
@@ -93,131 +102,215 @@
 @endsection
 
 @section('content')
-        <section class="dimensions-hero section">
-            <div class="faq-orb faq-orb-one"></div>
-            <div class="faq-orb faq-orb-two"></div>
-            <div class="container">
-                <nav class="breadcrumbs" aria-label="مسیر صفحه">
-                    <a href="{{ route('home') }}">صفحه اصلی</a>
-                    <i class="fa-light fa-chevron-left" aria-hidden="true"></i>
-                    <span>ابعاد کامیون و تریلی</span>
-                </nav>
-                <div class="dimensions-hero-grid">
-                    <div>
-                        <span class="eyebrow"><i class="fa-light fa-ruler-combined" aria-hidden="true"></i> راهنمای انتخاب وسیله حمل بار</span>
-                        <h1>جدول ابعاد و ظرفیت<br><span>انواع کامیون و تریلی</span></h1>
-                        <p>مقایسه سریع عرض، طول، ظرفیت بار و وزن نهایی خودرو برای انتخاب آگاهانه‌تر کامیون، تریلی یا کمرشکن متناسب با محموله.</p>
-                        <div class="hero-actions">
-                            <a class="button primary" href="#specifications">مشاهده جدول <i class="fa-light fa-arrow-down" aria-hidden="true"></i></a>
-                            <a class="button secondary" href="#common-questions">پرسش‌های رایج</a>
-                        </div>
-                    </div>
-                    <div class="dimension-summary glass">
-                        <div><i class="fa-light fa-truck-container" aria-hidden="true"></i><strong>۱۷</strong><span>نوع وسیله حمل</span></div>
-                        <div><i class="fa-light fa-weight-hanging" aria-hidden="true"></i><strong>۲/۵ تا ۵۹</strong><span>تن ظرفیت بار</span></div>
-                        <div><i class="fa-light fa-arrows-left-right-to-line" aria-hidden="true"></i><strong>۳/۵۰ تا ۱۶</strong><span>متر طول</span></div>
-                        <div><i class="fa-light fa-up-to-line" aria-hidden="true"></i><strong>۴/۵</strong><span>متر ارتفاع مجاز</span></div>
+    <section class="dimensions-hero section">
+        <div class="container">
+            <div class="dimensions-hero-grid">
+                <div>
+                    <span class="eyebrow"><i class="fa-light fa-ruler-combined" aria-hidden="true"></i> راهنمای انتخاب وسیله حمل بار</span>
+                    <h1>جدول ابعاد، ارتفاع و ظرفیت<br><span>انواع کامیون و تریلی</span></h1>
+                    <p>مقایسه سریع عرض، طول، ارتفاع مجاز و ظرفیت بار برای انتخاب ایمن‌ترین و مناسب‌ترین وسیله حمل بار متناسب با محموله شما.</p>
+                    <div class="hero-actions">
+                        <a class="button primary" href="#specifications">مشاهده جدول <i class="fa-light fa-arrow-down" aria-hidden="true"></i></a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="section dimensions-content" id="specifications">
-            <div class="container">
-                <div class="section-heading align-start dimensions-heading">
-                    <span class="eyebrow">مقایسه مشخصات فنی</span>
-                    <h2>مشخصات انواع کامیون، تریلی و کمرشکن</h2>
-                    <p>اعداد زیر برای مقایسه اولیه ارائه شده‌اند. پیش از بارگیری، مشخصات خودرو، نوع بار، محدودیت مسیر و الزامات قانونی همان حمل را بررسی کنید.</p>
-                </div>
-
-                <div class="truck-table-shell glass">
-                    <div class="table-scroll-hint"><i class="fa-light fa-hand-pointer" aria-hidden="true"></i> در موبایل، هر ردیف به‌صورت کارت نمایش داده می‌شود.</div>
-                    <div class="truck-table-wrap">
-                        <table class="truck-table">
-                            <caption>جدول عرض، طول، ظرفیت بار و وزن نهایی انواع کامیون و تریلی</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">نوع کامیون یا تریلی</th>
-                                    <th scope="col">عرض (متر)</th>
-                                    <th scope="col">طول (متر)</th>
-                                    <th scope="col">وزن بار (تن)</th>
-                                    <th scope="col">وزن کامیون با بار</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><th scope="row">کامیونت</th><td data-label="عرض (متر)">۱/۸۰</td><td data-label="طول (متر)">۳/۵۰</td><td data-label="وزن بار (تن)">۲/۵</td><td data-label="وزن کامیون با بار">۵ تن</td></tr>
-                                <tr><th scope="row">خاور ۶۰۸</th><td data-label="عرض (متر)">۲</td><td data-label="طول (متر)">۴</td><td data-label="وزن بار (تن)">۳/۵</td><td data-label="وزن کامیون با بار">۶ تن</td></tr>
-                                <tr><th scope="row">خاور ۸۰۸</th><td data-label="عرض (متر)">۲</td><td data-label="طول (متر)">۴</td><td data-label="وزن بار (تن)">۴</td><td data-label="وزن کامیون با بار">۸ تن</td></tr>
-                                <tr><th scope="row">۹۱۱ (بادسان)</th><td data-label="عرض (متر)">۲/۱۰</td><td data-label="طول (متر)">۴/۸۰</td><td data-label="وزن بار (تن)">۵</td><td data-label="وزن کامیون با بار">۹ تن</td></tr>
-                                <tr><th scope="row">کامیون تک</th><td data-label="عرض (متر)">۲/۳۰</td><td data-label="طول (متر)">۵/۸۰</td><td data-label="وزن بار (تن)">۱۰</td><td data-label="وزن کامیون با بار">۱۹ تن</td></tr>
-                                <tr><th scope="row">کامیون ۱۰ چرخ</th><td data-label="عرض (متر)">۲/۳۵</td><td data-label="طول (متر)">۶/۸۰</td><td data-label="وزن بار (تن)">۱۵</td><td data-label="وزن کامیون با بار">۲۶ تن</td></tr>
-                                <tr><th scope="row">تریلی کفی معمولی</th><td data-label="عرض (متر)">۲/۵۰</td><td data-label="طول (متر)">۱۲/۲۰</td><td data-label="وزن بار (تن)">۲۲</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                                <tr><th scope="row">تریلی کفی ۱۳/۶۰</th><td data-label="عرض (متر)">۲/۵۰</td><td data-label="طول (متر)">۱۳/۶۰</td><td data-label="وزن بار (تن)">۲۵</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                                <tr><th scope="row">ترانزیت معمولی</th><td data-label="عرض (متر)">۲/۵۰</td><td data-label="طول (متر)">۱۲/۲۰</td><td data-label="وزن بار (تن)">۲۲</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                                <tr><th scope="row">ترانزیت ۱۳/۶۰</th><td data-label="عرض (متر)">۲/۵۰</td><td data-label="طول (متر)">۱۳/۶۰</td><td data-label="وزن بار (تن)">۲۵</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                                <tr><th scope="row">کمر شکن ۲ محور</th><td data-label="عرض (متر)">۲/۶۰</td><td data-label="طول (متر)">۸/۵۰</td><td data-label="وزن بار (تن)">۲۲</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                                <tr><th scope="row">کمر شکن ۷ محور</th><td data-label="عرض (متر)">۳</td><td data-label="طول (متر)">۱۱</td><td data-label="وزن بار (تن)">۳۸</td><td data-label="وزن کامیون با بار">۶۲ تن</td></tr>
-                                <tr><th scope="row">کمر شکن ۱۱ محور</th><td data-label="عرض (متر)">۳/۱۰</td><td data-label="طول (متر)">۱۵</td><td data-label="وزن بار (تن)">۵۹</td><td data-label="وزن کامیون با بار">۹۶ تن</td></tr>
-                                <tr><th scope="row">تریلی کشویی</th><td data-label="عرض (متر)">۲/۵۰</td><td data-label="طول (متر)">۱۳</td><td data-label="وزن بار (تن)">۲۲</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                                <tr><th scope="row">تریلی ترافیکی معمولی</th><td data-label="عرض (متر)">۳/۵۰</td><td data-label="طول (متر)">۱۵</td><td data-label="وزن بار (تن)">۲۲</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                                <tr><th scope="row">تریلی ترافیکی تک اسکورت</th><td data-label="عرض (متر)">۴</td><td data-label="طول (متر)">۱۶</td><td data-label="وزن بار (تن)">۲۲</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                                <tr><th scope="row">تریلی ترافیکی ۲ اسکورت</th><td data-label="عرض (متر)">۵</td><td data-label="طول (متر)">۱۶</td><td data-label="وزن بار (تن)">۲۲</td><td data-label="وزن کامیون با بار">۴۰ تن</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="height-alert">
-                        <i class="fa-light fa-triangle-exclamation" aria-hidden="true"></i>
-                        <p><strong>نکته مهم ارتفاع بار:</strong> حد مجاز ارتفاع بار جهت کامیون از سطح زمین <b>۴/۵ متر</b> می‌باشد.</p>
-                    </div>
+                <div class="hero-image-box">
+                    <img src="{{ asset('assets/images/ابعاد-و-ظرفیت-انواع-کامیون-و-تریلی.webp') }}" alt="راهنمای ابعاد و ظرفیت کامیون و تریلی" width="512" height="512" fetchpriority="high">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section selection-guide">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">پیش از انتخاب خودرو</span>
-                    <h2>فقط ظرفیت وزنی را مقایسه نکنید</h2>
-                    <p>برای انتخاب وسیله مناسب، ابعاد واقعی محموله و شرایط مسیر به‌اندازه وزن اهمیت دارند.</p>
+    <section class="section dimensions-content" id="specifications">
+        <div class="container">
+            
+            {{-- نوار دسترسی سریع برای جلوگیری از سردرگمی کاربر و تقویت لینک‌سازی داخلی گوگل --}}
+            <nav class="quick-jump-nav" aria-label="دسترسی سریع به نوع ماشین">
+                <span class="quick-jump-title"><i class="fa-light fa-bolt"></i> انتخاب سریع ماشین (اسکرول و هایلایت در جدول):</span>
+                <div class="quick-jump-links">
+                    <a href="#row-pickup">کامیونت</a>
+                    <a href="#row-khavar-608">خاور ۶۰۸</a>
+                    <a href="#row-khavar-808">خاور ۸۰۸</a>
+                    <a href="#row-khavar-covered">خاور مسقف</a>
+                    <a href="#row-benz-911">بنز ۹۱۱</a>
+                    <a href="#row-single-truck">کامیون تک</a>
+                    <a href="#row-double-truck">کامیون جفت (۱۰ چرخ)</a>
+                    <a href="#row-trailer-normal">تریلی معمولی</a>
+                    <a href="#row-trailer-1360">تریلی ۱۳/۶۰</a>
+                    <a href="#row-lowboy-2axle">کمرشکن ۲ محور</a>
+                    <a href="#row-lowboy-3axle">کمرشکن ۳ محور</a>
+                    <a href="#row-lowboy-4axle">کمرشکن ۴ محور</a>
+                    <a href="#row-lowboy-5axle">کمرشکن ۵ تا ۱۱ محور</a>
                 </div>
-                <div class="selection-grid">
-                    <article class="glass"><i class="fa-light fa-ruler-triangle" aria-hidden="true"></i><h3>ابعاد محموله</h3><p>طول، عرض و ارتفاع بزرگ‌ترین قطعه را پیش از انتخاب خودرو اندازه بگیرید.</p></article>
-                    <article class="glass"><i class="fa-light fa-scale-balanced" aria-hidden="true"></i><h3>وزن و توزیع بار</h3><p>وزن کل و محل تمرکز آن بر نوع خودرو، تعداد محور و روش مهاربندی اثر دارد.</p></article>
-                    <article class="glass"><i class="fa-light fa-route" aria-hidden="true"></i><h3>محدودیت مسیر</h3><p>عرض معبر، ارتفاع پل، شعاع گردش و محدودیت تردد خودروهای سنگین را بررسی کنید.</p></article>
-                    <article class="glass"><i class="fa-light fa-file-shield" aria-hidden="true"></i><h3>مجوز و اسکورت</h3><p>بارهای ترافیکی و فوق‌سنگین ممکن است به مجوز مسیر و یک یا دو خودروی اسکورت نیاز داشته باشند.</p></article>
+            </nav>
+
+            <div class="truck-table-shell glass">
+                <div class="truck-table-wrap">
+                    <table class="truck-table">
+                        <caption>جدول جامع مشخصات فنی انواع کامیون، تریلی و کمرشکن</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">نوع کامیون / تریلی</th>
+                                <th scope="col">عرض (متر)</th>
+                                <th scope="col">طول (متر)</th>
+                                <th scope="col">ارتفاع مجاز (متر)</th>
+                                <th scope="col">ظرفیت بار (تن)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="row-pickup">
+                                <th scope="row"><a href="#row-pickup" class="row-anchor" title="لینک مستقیم به کامیونت">#</a> کامیونت</th>
+                                <td data-label="عرض">۱/۸۰</td>
+                                <td data-label="طول">۳/۵۰</td>
+                                <td data-label="ارتفاع مجاز">۲/۵۰</td>
+                                <td data-label="ظرفیت بار">۲/۵</td>
+                            </tr>
+                            <tr id="row-khavar-608">
+                                <th scope="row"><a href="#row-khavar-608" class="row-anchor" title="لینک مستقیم به خاور ۶۰۸">#</a> خاور ۶۰۸</th>
+                                <td data-label="عرض">۲</td>
+                                <td data-label="طول">۴</td>
+                                <td data-label="ارتفاع مجاز">۲/۸۰</td>
+                                <td data-label="ظرفیت بار">۳/۵</td>
+                            </tr>
+                            <tr id="row-khavar-808">
+                                <th scope="row"><a href="#row-khavar-808" class="row-anchor" title="لینک مستقیم به خاور ۸۰۸">#</a> خاور ۸۰۸</th>
+                                <td data-label="عرض">۲/۱۰</td>
+                                <td data-label="طول">۴/۶۰</td>
+                                <td data-label="ارتفاع مجاز">۲/۸۰</td>
+                                <td data-label="ظرفیت بار">۴/۵</td>
+                            </tr>
+                            <tr id="row-khavar-covered">
+                                <th scope="row"><a href="#row-khavar-covered" class="row-anchor" title="لینک مستقیم به خاور مسقف">#</a> خاور مسقف</th>
+                                <td data-label="عرض">۲ تا ۲/۲۵</td>
+                                <td data-label="طول">۴/۵ تا ۵/۸۰</td>
+                                <td data-label="ارتفاع مجاز">۲/۲۰ تا ۲/۸۰</td>
+                                <td data-label="ظرفیت بار">۳</td>
+                            </tr>
+                            <tr id="row-benz-911">
+                                <th scope="row"><a href="#row-benz-911" class="row-anchor" title="لینک مستقیم به بنز ۹۱۱">#</a> ۹۱۱</th>
+                                <td data-label="عرض">۲/۲۵</td>
+                                <td data-label="طول">۵ تا ۵/۵۰</td>
+                                <td data-label="ارتفاع مجاز">۳</td>
+                                <td data-label="ظرفیت بار">۵/۵</td>
+                            </tr>
+                            <tr id="row-single-truck">
+                                <th scope="row"><a href="#row-single-truck" class="row-anchor" title="لینک مستقیم به کامیون تک">#</a> کامیون تک (۶ چرخ)</th>
+                                <td data-label="عرض">۲/۳۵</td>
+                                <td data-label="طول">۵/۸۰ تا ۶/۲۰</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۱۰</td>
+                            </tr>
+                            <tr id="row-double-truck">
+                                <th scope="row"><a href="#row-double-truck" class="row-anchor" title="لینک مستقیم به کامیون جفت">#</a> کامیون ۱۰ چرخ (جفت)</th>
+                                <td data-label="عرض">۲/۴۲</td>
+                                <td data-label="طول">۶/۸۰ تا ۷</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۱۵</td>
+                            </tr>
+                            <tr id="row-trailer-normal">
+                                <th scope="row"><a href="#row-trailer-normal" class="row-anchor" title="لینک مستقیم به تریلی کفی معمولی">#</a> تریلی کفی معمولی</th>
+                                <td data-label="عرض">۲/۵۰</td>
+                                <td data-label="طول">۱۲/۲۰</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۲۲</td>
+                            </tr>
+                            <tr id="row-trailer-1360">
+                                <th scope="row"><a href="#row-trailer-1360" class="row-anchor" title="لینک مستقیم به تریلی ۱۳/۶۰">#</a> تریلی کفی ۱۳/۶۰</th>
+                                <td data-label="عرض">۲/۵۰</td>
+                                <td data-label="طول">۱۳/۶۰</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۲۵</td>
+                            </tr>
+                            <tr id="row-lowboy-2axle">
+                                <th scope="row"><a href="#row-lowboy-2axle" class="row-anchor" title="لینک مستقیم به کمرشکن ۲ محور">#</a> کمرشکن ۲ محور</th>
+                                <td data-label="عرض">۲/۶۰</td>
+                                <td data-label="طول">۸ تا ۱۱</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۲۶</td>
+                            </tr>
+                            <tr id="row-lowboy-3axle">
+                                <th scope="row"><a href="#row-lowboy-3axle" class="row-anchor" title="لینک مستقیم به کمرشکن ۳ محور">#</a> کمرشکن ۳ محور</th>
+                                <td data-label="عرض">۳</td>
+                                <td data-label="طول">۸/۵ تا ۱۱/۵</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۳۲</td>
+                            </tr>
+                            <tr id="row-lowboy-4axle">
+                                <th scope="row"><a href="#row-lowboy-4axle" class="row-anchor" title="لینک مستقیم به کمرشکن ۴ محور">#</a> کمرشکن ۴ محور</th>
+                                <td data-label="عرض">۳</td>
+                                <td data-label="طول">۹ تا ۱۱/۵</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۳۶</td>
+                            </tr>
+                            <tr id="row-lowboy-5axle">
+                                <th scope="row"><a href="#row-lowboy-5axle" class="row-anchor" title="لینک مستقیم به کمرشکن ۵ محور">#</a> کمرشکن ۵ محور</th>
+                                <td data-label="عرض">۳/۱۰</td>
+                                <td data-label="طول">۱۱/۵</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۴۶</td>
+                            </tr>
+                            <tr id="row-lowboy-7axle">
+                                <th scope="row"><a href="#row-lowboy-7axle" class="row-anchor" title="لینک مستقیم به کمرشکن ۷ محور">#</a> کمرشکن ۷ محور</th>
+                                <td data-label="عرض">۳/۱۰</td>
+                                <td data-label="طول">۱۳/۵</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۵۲</td>
+                            </tr>
+                            <tr id="row-lowboy-11axle">
+                                <th scope="row"><a href="#row-lowboy-11axle" class="row-anchor" title="لینک مستقیم به کمرشکن ۱۱ محور">#</a> کمرشکن ۱۱ محور</th>
+                                <td data-label="عرض">۳/۱۰</td>
+                                <td data-label="طول">۱۵</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۵۹</td>
+                            </tr>
+                            <tr id="row-traffic-1escort">
+                                <th scope="row"><a href="#row-traffic-1escort" class="row-anchor" title="لینک مستقیم به تریلی ترافیکی ۱ اسکورت">#</a> تریلی ترافیکی ۱ اسکورت</th>
+                                <td data-label="عرض">۲/۶۰ تا ۳/۵۰</td>
+                                <td data-label="طول">۱۳/۶۰</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۲۴</td>
+                            </tr>
+                            <tr id="row-traffic-2escort">
+                                <th scope="row"><a href="#row-traffic-2escort" class="row-anchor" title="لینک مستقیم به تریلی ترافیکی ۲ اسکورت">#</a> تریلی ترافیکی ۲ اسکورت</th>
+                                <td data-label="عرض">۳/۵۰ تا ۵</td>
+                                <td data-label="طول">۱۳/۶۰</td>
+                                <td data-label="ارتفاع مجاز">۴/۵</td>
+                                <td data-label="ظرفیت بار">۲۴</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="height-alert">
+                    <p><strong>نکته قانونی راهداری:</strong> حد مجاز ارتفاع بار به همراه وسیله نقلیه از سطح زمین جهت تردد عادی در جاده‌ها حداکثر <strong>۴/۵ متر</strong> است.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section faq-section dimensions-faq" id="common-questions">
-            <div class="container faq-layout">
-                <div class="section-heading align-start">
-                    <span class="eyebrow">پرسش‌های متداول</span>
-                    <h2>سوالات رایج درباره ابعاد کامیون و تریلی</h2>
-                    <p>پاسخ کوتاه به نکات مهمی که هنگام مقایسه ظرفیت و اندازه خودروهای حمل مطرح می‌شوند.</p>
-                </div>
-                <div class="faq-list">
-                    <details>
-                        <summary>حد مجاز ارتفاع بار کامیون از سطح زمین چقدر است؟ <i class="fa-light fa-plus" aria-hidden="true"></i></summary>
-                        <p>بر اساس اطلاعات این جدول، حد مجاز ارتفاع بار کامیون از سطح زمین ۴/۵ متر است. ارتفاع نهایی باید پس از بارگیری و با در نظر گرفتن مسیر کنترل شود.</p>
-                    </details>
-                    <details>
-                        <summary>طول تریلی کفی معمولی و ۱۳/۶۰ چقدر است؟ <i class="fa-light fa-plus" aria-hidden="true"></i></summary>
-                        <p>تریلی کفی معمولی ۱۲/۲۰ متر و نوع ۱۳/۶۰ به‌اندازه ۱۳/۶۰ متر طول دارد. عرض درج‌شده برای هر دو مدل ۲/۵۰ متر است.</p>
-                    </details>
-                    <details>
-                        <summary>ظرفیت کامیون تک و کامیون ۱۰ چرخ چقدر است؟ <i class="fa-light fa-plus" aria-hidden="true"></i></summary>
-                        <p>ظرفیت بار کامیون تک در جدول ۱۰ تن و ظرفیت کامیون ۱۰ چرخ ۱۵ تن درج شده است؛ وزن کامیون با بار نیز به‌ترتیب ۱۹ و ۲۶ تن است.</p>
-                    </details>
-                    <details>
-                        <summary>برای حمل بار فوق سنگین کدام کمرشکن انتخاب می‌شود؟ <i class="fa-light fa-plus" aria-hidden="true"></i></summary>
-                        <p>در میان مدل‌های این جدول، کمرشکن ۱۱ محور با ظرفیت ۵۹ تن بیشترین ظرفیت را دارد. بااین‌حال ابعاد محموله، توزیع وزن، مسیر و مجوزها انتخاب نهایی را تعیین می‌کنند.</p>
-                    </details>
-                    <details>
-                        <summary>وزن بار چه تفاوتی با وزن کامیون با بار دارد؟ <i class="fa-light fa-plus" aria-hidden="true"></i></summary>
-                        <p>وزن بار به ظرفیت محموله اشاره دارد، اما وزن کامیون با بار مجموع وزن خود وسیله نقلیه و محموله بارگیری‌شده است.</p>
-                    </details>
-                </div>
+    <section class="section faq-section" id="common-questions">
+        <div class="container">
+            <h2>پرسش‌های متداول</h2>
+            <div class="faq-list">
+                <details>
+                    <summary>حد مجاز ارتفاع بار کامیون چقدر است؟</summary>
+                    <p>حد مجاز قانونی ۴/۵ متر از سطح زمین است. بارهای بالاتر از این مقدار نیاز به مجوز بار ترافیکی و اسکورت دارند.</p>
+                </details>
+                <details>
+                    <summary>حداکثر عرض مجاز کامیون و تریلی در جاده‌ها چقدر است؟</summary>
+                    <p>طبق قوانین راهداری ایران، حداکثر عرض مجاز وسایل نقلیه باری برای تردد عادی ۲/۶۰ متر است. بارهای عریض‌تر از این مقدار ترافیکی محسوب می‌شوند.</p>
+                </details>
+                <details>
+                    <summary>تفاوت ظرفیت و ابعاد کامیون تک (۶ چرخ) با جفت (۱۰ چرخ) چیست؟</summary>
+                    <p>کامیون تک دارای ظرفیت بارگیری حدود ۱۰ تن و طول اتاق ۵/۸۰ تا ۶/۲۰ متر است، اما کامیون جفت (۱۰ چرخ) توانایی حمل ۱۵ تن بار را دارد و طول اتاق آن معمولاً ۶/۸۰ تا ۷ متر می‌باشد.</p>
+                </details>
+                <details>
+                    <summary>تفاوت طول تریلی کفی معمولی با تریلی ۱۳/۶۰ چیست؟</summary>
+                    <p>طول بارگیر تریلی‌های کفی معمولی ۱۲/۲۰ متر با ظرفیت ۲۲ تن است، در حالی که طول مدل‌های ترانزیت و کفی بلند ۱۳/۶۰ متر با ظرفیت حدود ۲۵ تن می‌باشد.</p>
+                </details>
+                <details>
+                    <summary>برای حمل بارهای سنگین بیش از ۴۰ تن از چه ماشینی استفاده می‌شود؟</summary>
+                    <p>برای محموله‌های فوق سنگین بالای ۴۰ تن، از انواع کمرشکن‌ها (۵ تا ۱۱ محور) و بوژی استفاده می‌شود که ظرفیت حمل بار از ۴۶ تن تا بیش از ۱۰۰ تن را دارا هستند.</p>
+                </details>
             </div>
-        </section>
+        </div>
+    </section>
 @endsection
